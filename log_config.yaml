@@ -1,0 +1,27 @@
+version: 1
+disable_existing_loggers: False
+formatters:
+  default:
+    format: "%(levelprefix)s %(message)s"
+
+handlers:
+  default:
+    class: logging.StreamHandler
+    stream: ext://sys.stdout   # ✅ send logs to stdout
+    formatter: default
+
+loggers:
+  uvicorn:
+    handlers: [default]
+    level: INFO
+    propagate: False
+
+  uvicorn.error:
+    handlers: [default]
+    level: INFO
+    propagate: False
+
+  uvicorn.access:
+    handlers: [default]
+    level: INFO
+    propagate: False
